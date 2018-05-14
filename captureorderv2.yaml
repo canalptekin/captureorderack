@@ -1,17 +1,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: captureorder
+  name: captureordervsts
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: captureorder
+        app: captureordervsts
     spec:
       containers:
-      - name: captureorder
-        image: shanepeckham/captureorderack:v9
+      - name: captureordervsts
+        image: akshackreg.azurecr.io/canalptekin/captureorderack:latest
         env:
         - name: "TEAMNAME"
           value: "TEAM2"
@@ -25,4 +25,4 @@ spec:
           value: "0"
         ports:
         - containerPort: 8080
-          name: captureorder
+          name: captureordervsts
