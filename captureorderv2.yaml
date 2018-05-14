@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: captureorder
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: captureorder
+    spec:
+      containers:
+      - name: captureorder
+        image: shanepeckham/captureorderack:v9
+        env:
+        - name: "TEAMNAME"
+          value: "TEAM2"
+        - name: "MONGOHOST"
+          value: "mongodb://nosy-badger-mongodb"
+        - name: "RABBITMQHOST"
+          value: "amqp://admin:admin4321@dtmq-rabbitmq:5672"
+        - name: "PROCESSENDPOINT"
+          value: "http://captureorder:8080/v1/order"
+        - name: "PARTITIONKEY"
+          value: "0"
+        ports:
+        - containerPort: 8080
+          name: captureorder

@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: fullfillorder
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fullfillorder
+    spec:
+      containers:
+      - name: fullfillorder
+        image: shanepeckham/fulfillorderack:v8
+        env:
+        - name: TEAMNAME
+          value: "TEAM2"
+        - name: MONGOHOST
+          value: "mongodb://nosy-badger-mongodb"
+        ports:
+        - containerPort: 8080
+          name: captureorder
+        volumeMounts:
+        - mountPath: "/orders"
+          name: orders
+      volumes:
+        - name: orders
+          persistentVolumeClaim:
+           claimName: orderstr

@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: eventlistener
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eventlistener
+    spec:
+      containers:
+      - name: eventlistener
+        image: shanepeckham/rabbitmqlistenerack:v8
+        env:
+        - name: "TEAMNAME"
+          value: "TEAM2"
+        - name: "RABBITMQHOST"
+          value: "amqp://admin:admin4321@dtmq-rabbitmq:5672"
+        - name: "PROCESSENDPOINT"
+          value: "http://fullfillorder:8080/v1/order"
+        - name: "PARTITIONKEY"
+          value: "0"
+        ports:
+        - containerPort: 8080
+          name: captureorder
