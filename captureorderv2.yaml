@@ -25,4 +25,4 @@ spec:
           value: "0"
         ports:
         - containerPort: 8080
-          name: captureordervsts
+          name: captureorder
