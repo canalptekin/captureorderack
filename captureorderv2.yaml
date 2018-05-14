@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: captureordervsts
@@ -26,5 +26,5 @@ spec:
         ports:
         - containerPort: 8080
           name: captureorder
-        imagePullSecrets:
-        - name: akshackreg
+      imagePullSecrets:
+      - name: aksreg
