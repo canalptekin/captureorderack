@@ -27,4 +27,4 @@ spec:
         - containerPort: 8080
           name: captureorder
       imagePullSecrets:
-      - name: regcred
+      - name: akshackreg
