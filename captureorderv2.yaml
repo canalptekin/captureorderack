@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: captureordervsts
-        image: akshackreg.azurecr.io/canalptekin/captureorderack:latest
+        image: akshackreg.azurecr.io/canalptekin/captureorderack
         env:
         - name: "TEAMNAME"
           value: "TEAM2"
